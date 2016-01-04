@@ -118,6 +118,7 @@ function! neomake#makers#ft#haskell#hlint() abort
         \ 'postprocess': function('neomake#makers#ft#haskell#HlintEntryProcess'),
         \ 'args': [],
         \ 'errorformat':
+            \ '%E%f:%l:%v: Warning: Parse error: %m,' .
             \ '%E%f:%l:%v: Error: %m,' .
             \ '%W%f:%l:%v: Warning: %m,' .
             \ '%W%f:%l:%v: Suggestion: %m,' .
