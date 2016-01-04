@@ -342,18 +342,12 @@ function! s:AddExprCallback(maker) abort
     endwhile
 
     if list_modified
-        if file_mode
-            call setloclist(a:maker.winnr, list, 'r')
-        else
-            call setqflist(list, 'r')
-        endif
+        call setqflist(list, 'r')
     endif
 
-    if file_mode
-        let s:loclist_nr[a:maker.winnr] = index
-    else
-        let s:qflist_nr = index
-    endif
+    let s:qflist_nr = index
+
+    call lightline#update()
 endfunction
 
 function! s:CleanJobinfo(jobinfo) abort
