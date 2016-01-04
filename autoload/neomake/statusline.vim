@@ -53,8 +53,38 @@ function! s:showErrWarning(counts, prefix)
     endif
 endfunction
 
+function! s:showErr(counts, prefix)
+    let e = get(a:counts, 'E', 0)
+    if e
+        let result = a:prefix
+        let result .= 'E:'.e
+        return result
+    else
+        return ''
+    endif
+endfunction
+
+function! s:showWarning(counts, prefix)
+    let w = get(a:counts, 'W', 0)
+    if w 
+        let result = a:prefix
+        let result .= 'W:'.w
+        return result
+    else
+        return ''
+    endif
+endfunction
+
 function! neomake#statusline#LoclistStatus(...) abort
     return s:showErrWarning(neomake#statusline#LoclistCounts(), a:0 ? a:1 : '')
+endfunction
+
+function! neomake#statusline#LoclistErrors(...) abort
+    return s:showErr(neomake#statusline#LoclistCounts(), a:0 ? a:1 : '')
+endfunction
+
+function! neomake#statusline#LoclistWarnings(...) abort
+    return s:showWarning(neomake#statusline#LoclistCounts(), a:0 ? a:1 : '')
 endfunction
 
 function! neomake#statusline#QflistStatus(...) abort
