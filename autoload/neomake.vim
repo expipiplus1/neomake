@@ -619,17 +619,19 @@ function! s:AddExprCallback(jobinfo) abort
     endif
 
     if list_modified
-        if file_mode
-            call setloclist(maker.winnr, list, 'r')
-        else
-            call setqflist(list, 'r')
-        endif
+        call setqflist(list, 'r')
     endif
+
     if ignored_signs
         call neomake#utils#DebugMessage(printf(
                     \ 'Could not place signs for %d entries without line number.',
                     \ ignored_signs))
     endif
+
+    let s:qflist_nr = index
+
+    call lightline#update()
+
     return counts_changed
 endfunction
 
