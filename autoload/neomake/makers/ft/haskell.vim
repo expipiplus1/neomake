@@ -42,6 +42,7 @@ endfunction
 function! neomake#makers#ft#haskell#hlint()
     return {
         \ 'errorformat':
+            \ '%E%f:%l:%v: Warning: Parse error: %m,' .
             \ '%E%f:%l:%v: Error: %m,' .
             \ '%W%f:%l:%v: Warning: %m,' .
             \ '%W%f:%l:%v: Suggestion: %m,' .
