@@ -120,7 +120,7 @@ function! neomake#makers#ft#haskell#hlint() abort
         \ 'errorformat':
             \ '%E%f:%l:%v: Error: %m,' .
             \ '%W%f:%l:%v: Warning: %m,' .
-            \ '%I%f:%l:%v: Suggestion: %m,' .
+            \ '%W%f:%l:%v: Suggestion: %m,' .
             \ '%C%m'
         \ })
 endfunction
