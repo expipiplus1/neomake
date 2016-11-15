@@ -54,7 +54,7 @@ endfunction
 function! neomake#makers#ft#haskell#hdevtools() abort
     let params = {
         \ 'exe': 'hdevtools',
-        \ 'args': ['check', '-g-Wall'],
+        \ 'args': ['check', '-g-Wall', '-g-isrc', '-g-itest'],
         \ 'mapexpr': s:CleanUpSpaceAndBackticks(),
         \ 'errorformat':
             \ '%-Z %#,'.
